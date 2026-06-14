@@ -18,11 +18,9 @@ function assertIncludesAll(text, signals, label) {
 }
 
 test("public and workflow docs expose the non-copying boundary", () => {
+  // 非复制边界是「实现约束」，留在面向 Agent/开发者的 SKILL.md 与 implementation-flow，
+  // 不写进用户视角的 README（README 只讲用户能得到什么）。
   const docs = [
-    {
-      file: "README.md",
-      signals: ["不抄设计", "原创", "产品化", "社交卡片"]
-    },
     {
       file: "SKILL.md",
       signals: ["非复制", "布局 ID", "视觉身份"]
