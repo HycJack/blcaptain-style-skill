@@ -4,7 +4,7 @@ import fs from "node:fs";
 
 const md = fs.readFileSync("references/blcaptain-visual-grammar.md", "utf8");
 const contracts = JSON.parse(fs.readFileSync("references/blcaptain-visual-grammar.contracts.json", "utf8"));
-const brief = fs.readFileSync("tasks/real-scene-first-brief.md", "utf8");
+const brief = fs.readFileSync("references/real-scene-first-brief.md", "utf8");
 const pkg = JSON.parse(fs.readFileSync("package.json", "utf8"));
 
 test("visual grammar explains the layered method instead of JSON-only styling", () => {

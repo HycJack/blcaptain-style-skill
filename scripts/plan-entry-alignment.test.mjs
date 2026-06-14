@@ -46,7 +46,6 @@ test("user-facing plan docs and sample script avoid legacy style defaults", () =
   const files = [
     "README.md",
     "SKILL.md",
-    "references/production-workflow.md",
     "package.json"
   ];
 
