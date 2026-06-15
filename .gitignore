@@ -47,3 +47,7 @@ references/visual-direction-boards/
 __pycache__/
 *.pyc
 docs/hero-cover-wall-sources.md
+
+# 本地 WIP（未引用，不进公开仓库）
+docs/theme-series-*
+scripts/make-theme-series-canvases.mjs
