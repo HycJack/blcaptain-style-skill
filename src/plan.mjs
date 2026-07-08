@@ -58,12 +58,16 @@ function toneFor(theme) {
 }
 
 // route C 取图全集顺序（忠实 references/image-source-workflow.md；user/ai 在前作为 A/B 路线，CC0/PD 优先见 licensePreference）
-// 国内 CC0 源(cc0cn/palayoutu/ssyer/hippopx)前置——国内可访问无需 VPN，搭「国内开箱即用」；国际源(unsplash/pexels)随后作高质量补充。
+// 图源存活核验 2026-07-08：国内 CC0 直取源仅沙沙野(ssyer) 存活；泼辣有图/别样网(bieyang.info) 已关站、cc0.cn 降为人工浏览入口(不入序)。
+// 国内位主力改用有中文界面、国内可访问的 Pexels / Pixabay；hippopx 法律兜底弱，列备选。
 const COVER_PROVIDER_ORDER = [
   "user", "ai",
-  "cc0cn", "palayoutu", "hippopx", "ssyer",
-  "unsplash", "pexels", "stocksnap", "pixabay", "negativespace",
-  "kaboompics", "burst", "rawpixel", "flickr-cc", "openverse", "wallhaven",
+  "ssyer",
+  "pexels", "pixabay",
+  "unsplash", "stocksnap", "negativespace",
+  "kaboompics", "burst", "rawpixel", "flickr-cc", "openverse",
+  "hippopx",
+  "wallhaven",
   "direct-search",
 ];
 

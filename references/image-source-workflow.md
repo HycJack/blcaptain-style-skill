@@ -57,26 +57,32 @@ C. 我从公开图源找候选，确认后下载入库并记录 SOURCES.md
 
 公开图源顺序：
 
+> **图源清单核验日期：2026-07-08。** 站点存活性会变化，以此日期为准。本次核验：泼辣有图（polayoutu.com）已停运（302 跳转产品官网）、别样网（bieyang.info）已关站（域名待售）——均已移除；`ssyer.com` 实为**沙沙野**（此前误标为「别样网」，已更正）；cc0.cn 存活但降为人工浏览入口。发现失效请同步更新本表、`src/imageWorkflow.mjs` 与 `src/plan.mjs`。
+
 ```text
-CC0.CN（国内 CC0，国内可访问无需 VPN）
-泼辣有图 Palayoutu（国内 CC0 摄影）
-Hippopx（CC0，国内可访问）
-别样网 SSYER（国内 CC0 摄影）
+沙沙野 ssyer.com（国内 CC0 摄影社区，有 ICP 备案，国内可访问无需 VPN）
+Pexels（有中文站，国内可访问性较好，官方 API）
+Pixabay（有中文界面，官方 API；须缓存 24h、禁批量下载、禁永久热链）
 Unsplash
-Pexels
 StockSnap CC0
-Pixabay
 NegativeSpace CC0
 Kaboompics
 Burst
 rawpixel Public Domain
 Flickr CC0 / Public Domain
-Openverse CC0 / Public Domain
+Openverse CC0 / Public Domain（须逐条按 license 过滤 NC/ND）
+Hippopx（CC0，国内可访问；无条款页/无作者/无来源追溯/无 DMCA，法律兜底最弱，仅备选）
 Wallhaven
 直接搜索取图
 ```
 
-国内 CC0 源前置：搭「国内开箱即用」，国内可访问、无需 VPN；国际源（Unsplash/Pexels 等）作高质量补充。所有来源仍须记录 `SOURCES.md`。
+人工浏览入口（不作程序化取图）：
+
+```text
+CC0.CN（聚合部分仅预览图、原图须跳源站，「CC0」标签与源站真实协议如 Unsplash License 可能不符，且无 API）
+```
+
+国内位主力：原国内 CC0 站点多已关站，现以国内可直取的沙沙野，以及有中文界面、国内可访问的 Pexels / Pixabay 前置，搭「国内开箱即用」；其余国际源作高质量补充。所有来源仍须记录 `SOURCES.md`。
 
 公开可见不等于可以不记录来源。外部素材必须复制 / 下载到 `assets/`，并写入 `SOURCES.md`。
 
@@ -94,7 +100,7 @@ Wallhaven
 来源层级：
 
 1. `Tier 0`：用户提供素材。若用户确认可用，来源最明确。
-2. `Tier 1`：CC0 / Public Domain，例如 StockSnap、NegativeSpace、rawpixel Public Domain、Flickr CC0 / Public Domain、Openverse CC0 / Public Domain，以及**国内 CC0 源 CC0.CN / 泼辣有图 / Hippopx / 别样网（国内可访问无需 VPN）**。
+2. `Tier 1`：CC0 / Public Domain，例如 StockSnap、NegativeSpace、rawpixel Public Domain、Flickr CC0 / Public Domain、Openverse CC0 / Public Domain，以及**国内可访问 CC0 源 沙沙野 ssyer.com、Hippopx（备选，法律兜底弱）（国内可访问无需 VPN）；CC0.CN 仅作人工浏览入口**。
 3. `Tier 2`：免费商用但有平台限制或条款的来源，例如 Unsplash、Pexels、Pixabay、Burst、Kaboompics。
 4. `Tier 3`：需要署名的宽松 Creative Commons，例如 CC BY。只有在可接受署名时使用，不能当作“无版权要求”。
 

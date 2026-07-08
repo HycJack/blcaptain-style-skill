@@ -11,26 +11,28 @@ const IMAGE_LAYOUTS = new Set([
   "screenshot-focus"
 ]);
 
-// 图源全集（忠实 references/image-source-workflow.md 的 12 公开源 + 4 层版权 tier；别缩成两个）
+// 图源全集（忠实 references/image-source-workflow.md；4 层版权 tier）。
+// 站点存活性核验日期：2026-07-08（见 verified 字段）。发现失效源请同步更新本表、src/plan.mjs 的
+// COVER_PROVIDER_ORDER 与 references/image-source-workflow.md。manual:true = 仅人工浏览入口，不进程序化取图顺序。
 const PROVIDERS = [
   { id: "user",          label: "用户自有图片",                 tier: "Tier 0",          note: "最优先。真实截图、实拍图、产品图优先于任何图库。" },
   { id: "ai",            label: "AI 生成图",                    tier: "B 路线",          note: "概念/氛围/抽象/不可拍摄场景；不可冒充真实产品、真实人物或真实地点。" },
-  { id: "unsplash",      label: "Unsplash",                     tier: "Tier 2",          note: "生活方式、风景、办公、旅行、抽象商业场景；免费可商用，遵守平台条款。" },
-  { id: "pexels",        label: "Pexels",                       tier: "Tier 2",          note: "人物、生活、职场、消费场景；免费可商用、无需署名。" },
+  { id: "ssyer",         label: "沙沙野（国内）",               tier: "Tier 1 (CC0)",    verified: "2026-07-08", note: "沙沙野 ssyer.com，国内 CC0 摄影社区，有 ICP 备案，全站声明可商用（CC0 1.0）；国内可访问无需 VPN。下载是否需登录待确认。" },
+  { id: "pexels",        label: "Pexels（有中文站）",           tier: "Tier 2",          verified: "2026-07-08", note: "人物、生活、职场、消费场景；免费可商用、无需署名；有中文界面、官方 API，国内可访问性较好——国内位主力之一。" },
+  { id: "pixabay",       label: "Pixabay（有中文界面）",        tier: "Tier 2",          verified: "2026-07-08", note: "广覆盖素材；免费可商用；有中文界面、官方 API（须缓存 24h、禁批量下载、禁永久热链）——国内位主力之一。" },
+  { id: "unsplash",      label: "Unsplash",                     tier: "Tier 2",          note: "生活方式、风景、办公、旅行、抽象商业场景；免费可商用；API 场景须署名并 hotlink。" },
   { id: "stocksnap",     label: "StockSnap",                    tier: "Tier 1 (CC0)",    note: "CC0 公共领域，可商用、无需署名，来源最干净之一。" },
-  { id: "pixabay",       label: "Pixabay",                      tier: "Tier 2",          note: "广覆盖素材；免费可商用，遵守平台条款。" },
   { id: "negativespace", label: "NegativeSpace",                tier: "Tier 1 (CC0)",    note: "CC0；留白构图好，适合满铺/封面主视觉。" },
   { id: "kaboompics",    label: "Kaboompics",                   tier: "Tier 2",          note: "生活方式、室内、静物；免费可商用，注意平台条款。" },
   { id: "burst",         label: "Burst (Shopify)",              tier: "Tier 2",          note: "电商、产品、创业场景；免费可商用。" },
   { id: "rawpixel",      label: "rawpixel Public Domain",       tier: "Tier 1 (PD)",     note: "仅取其 Public Domain 部分；东方/复古/艺术藏品类素材丰富。" },
   { id: "flickr-cc",     label: "Flickr CC0 / Public Domain",   tier: "Tier 1 (CC0/PD)", note: "只用 CC0/PD 过滤结果；真实地点、纪实、旅行、城市现场。" },
-  { id: "openverse",     label: "Openverse CC0 / Public Domain", tier: "Tier 1 (CC0/PD)", note: "跨库聚合 CC0/PD；保留原始来源与许可判断。" },
-  { id: "cc0cn",         label: "CC0.CN（国内）",               tier: "Tier 1 (CC0)",    note: "国内 CC0 聚合，国内可访问无需 VPN；可商用无需署名。搭『国内开箱即用』。" },
-  { id: "palayoutu",     label: "泼辣有图（国内）",             tier: "Tier 1 (CC0)",    note: "泼辣开源摄影，CC0 可商用；氛围/风景/生活摄影质感好，国内可访问。" },
-  { id: "ssyer",         label: "别样网（国内）",               tier: "Tier 1 (CC0)",    note: "国内 CC0 摄影社区，可商用；国内可访问。" },
-  { id: "hippopx",       label: "Hippopx",                      tier: "Tier 1 (CC0)",    note: "CC0 公共领域，可商用无需署名；国内可访问。" },
+  { id: "openverse",     label: "Openverse CC0 / Public Domain", tier: "Tier 1 (CC0/PD)", note: "跨库聚合；须逐条按 license 过滤（含 NC/ND），保留原始来源与许可判断。" },
+  { id: "hippopx",       label: "Hippopx（备选）",              tier: "Tier 1 (CC0)",    verified: "2026-07-08", note: "CC0 公共领域，可商用无需署名，国内可访问（需浏览器 UA 直链）；但全站无条款页/无作者/无来源追溯/无 DMCA，法律兜底最弱，仅备选。" },
   { id: "wallhaven",     label: "Wallhaven",                    tier: "Tier 2/3 (按图)", note: "游戏/影视/二次元/key art 氛围图；默认只用 SFW，许可逐图判断。" },
   { id: "direct-search", label: "直接搜索",                     tier: "最后手段",        note: "官方/可信来源（地图、报告、产品官图）；必须人工判断版权与出处。" },
+  // 人工浏览入口（manual:true，不进程序化顺序）。泼辣有图(polayoutu)、别样网(bieyang.info) 于 2026-07-08 核验已关站，已移除。
+  { id: "cc0cn",         label: "CC0.CN（人工浏览入口）",       tier: "人工浏览入口",     verified: "2026-07-08", manual: true, note: "cc0.cn 存活，但聚合部分（Pixabay/Unsplash 精选）仅预览图、原图须跳源站，「CC0」标签与源站真实协议（如 Unsplash License）可能不符，且无 API。降级为人工浏览入口，不作程序化取图源。" },
 ];
 
 function hasImage(card) {
@@ -85,8 +87,8 @@ function providerOrderHeuristic(card, brief) {
   if (/截图|screenshot|ui|dashboard|app|codex|claude|openclaw|工具/.test(text)) {
     return ["user", "ai", "direct-search"];
   }
-  // 默认走全集（CC0/PD 优先在 licensePreference 标注），别缩成两个
-  return PROVIDERS.map(p => p.id);
+  // 默认走全集（CC0/PD 优先在 licensePreference 标注），别缩成两个；manual 源（人工浏览入口）不入程序化顺序
+  return PROVIDERS.filter(p => !p.manual).map(p => p.id);
 }
 
 export async function imagePlan(briefPath, outPath) {

@@ -33,6 +33,8 @@ C 路线按以下顺序找：
 11. Wallhaven
 12. 直接搜索取图
 
+国内可访问补充（核验 2026-07-08）：沙沙野 ssyer.com（国内 CC0，有 ICP 备案）、Pexels / Pixabay 中文站前置；hippopx 法律兜底弱作备选；cc0.cn 仅人工浏览入口。泼辣有图、别样网已关站。完整策略与核验说明见 `references/image-source-workflow.md`。
+
 如果用户说“无版权要求”，优先：
 
 ```text

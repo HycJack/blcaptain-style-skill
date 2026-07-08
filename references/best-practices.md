@@ -77,8 +77,10 @@ SOURCES.md
 公开图源按：
 
 ```text
-cc0cn -> 泼辣有图 -> hippopx -> 别样网 -> Unsplash -> Pexels -> StockSnap CC0 -> Pixabay -> Kaboompics -> Flickr CC0 / Public Domain -> Openverse CC0 / Public Domain -> Wallhaven -> 直接搜索
+沙沙野(ssyer) -> Pexels -> Pixabay -> Unsplash -> StockSnap CC0 -> NegativeSpace CC0 -> Kaboompics -> Burst -> rawpixel PD -> Flickr CC0 / Public Domain -> Openverse CC0 / Public Domain -> hippopx(备选) -> Wallhaven -> 直接搜索
 ```
+
+> 核验 2026-07-08：泼辣有图、别样网已关站移除；ssyer.com 实为沙沙野（原误标别样网）；cc0.cn 降为人工浏览入口，不入程序化顺序。
 
 ## 9. 内部 meta 不得污染发布卡片
 
